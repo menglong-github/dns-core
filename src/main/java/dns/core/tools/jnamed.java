@@ -283,7 +283,7 @@ public class jnamed {
       RRset nsRecords = sr.getNS();
       addRRset(nsRecords.getName(), response, nsRecords, Section.AUTHORITY, flags);
     } else if (sr.isCNAME()) {
-      CNAMERecord cname = sr.getCNAME();
+      CNAMERecord cname = (CNAMERecord) sr.getCNAME().first();
       RRset rrset = new RRset(cname);
       addRRset(name, response, rrset, Section.ANSWER, flags);
       if (zone != null && iterations == 0) {
@@ -291,7 +291,7 @@ public class jnamed {
       }
       rcode = addAnswer(response, cname.getTarget(), type, dclass, iterations + 1, flags);
     } else if (sr.isDNAME()) {
-      DNAMERecord dname = sr.getDNAME();
+      DNAMERecord dname = (DNAMERecord) sr.getDNAME().first();
       RRset rrset = new RRset(dname);
       addRRset(name, response, rrset, Section.ANSWER, flags);
       Name newname;

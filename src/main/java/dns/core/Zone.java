@@ -30,13 +30,13 @@ public class Zone implements Serializable {
   private SOARecord SOA;
   private boolean hasWild;
 
+  public boolean dnssec;
+
   class ZoneIterator implements Iterator<RRset> {
     private final Iterator<Map.Entry<Name, Object>> zentries;
     private RRset[] current;
     private int count;
     private boolean wantLastSOA;
-
-    public boolean dnssec;
 
     ZoneIterator(boolean axfr) {
       synchronized (Zone.this) {

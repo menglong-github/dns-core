@@ -536,10 +536,10 @@ public final class Lookup {
       answers = null;
       done = true;
     } else if (response.isCNAME()) {
-      CNAMERecord cname = response.getCNAME();
+      CNAMERecord cname = (CNAMERecord) response.getCNAME().first();
       follow(cname.getTarget(), name);
     } else if (response.isDNAME()) {
-      DNAMERecord dname = response.getDNAME();
+      DNAMERecord dname = (DNAMERecord) response.getDNAME().first();
       try {
         follow(name.fromDNAME(dname), name);
       } catch (NameTooLongException e) {

@@ -149,13 +149,13 @@ public class SetResponse {
   }
 
   /** If the query encountered a CNAME, return it. */
-  public CNAMERecord getCNAME() {
-    return (CNAMERecord) data.get(0).first();
+  public RRset getCNAME() {
+    return data.get(0);
   }
 
   /** If the query encountered a DNAME, return it. */
-  public DNAMERecord getDNAME() {
-    return (DNAMERecord) data.get(0).first();
+  public RRset getDNAME() {
+    return data.get(0);
   }
 
   /** If the query hit a delegation point, return the NS set. */
